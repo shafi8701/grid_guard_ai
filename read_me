@@ -1,0 +1,1 @@
+This is a grid guard ai. It tells you whether you can sell specific product in US or CA region. It has combination of both RAG and Fine tune LLMs implementations.
