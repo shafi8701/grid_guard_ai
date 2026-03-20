@@ -1,37 +1,26 @@
-from app.models.request import ComplianceRequest
+from app.domain.rules.canada_rule import CanadaRule
+from app.domain.rules.us_rule import USRule
+from app.domain.rules.pricing_rule import PricingRule
+from app.domain.models.rule_result import RuleResult
 
 
-def check_rules(request: ComplianceRequest):
-    
-    region = request.region.lower()
-    certs = [c.upper() for c in request.certifications]
+class RuleEngine:
 
-    # Canada → CSA required
-    if "canada" in region:
-        if "CSA" not in certs:
-            return {
-                "blocked": True,
-                "response": {
-                    "allowed": False,
-                    "region": request.region,
-                    "reason": "CSA certification required in Canada",
-                    "conditions": ["CSA certification mandatory"],
-                    "risk_level": "HIGH"
-                }
-            }
+    def __init__(self):
+        self.rules = [
+            CanadaRule(),
+            USRule(),
+            PricingRule()
+        ]
 
-    # USA → UL required
-    if "usa" in region or "california" in region or "texas" in region:
-        if "UL" not in certs:
-            return {
-                "blocked": True,
-                "response": {
-                    "allowed": False,
-                    "region": request.region,
-                    "reason": "UL certification required in USA",
-                    "conditions": ["UL certification mandatory"],
-                    "risk_level": "HIGH"
-                }
-            }
+    def evaluate(self, request) -> RuleResult:
 
-    return {"blocked": False}
+        for rule in self.rules:
+            result = rule.evaluate(request)
+
+            # Stop immediately if blocked
+            if result.blocked:
+                return result
+
+        # Default: allowed
+        return RuleResult(blocked=False)
