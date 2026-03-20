@@ -1,10 +1,9 @@
-from app.domain.services.rule_engine import RuleEngine
+from app.services.rule_engine import RuleEngine
 from app.mappers.response_mapper import map_rule_to_response
 from app.services.llm_service import get_llm_response
-from app.schemas.response import ComplianceResponse
+from app.domain.models.response import ComplianceResponse
 
 rule_engine = RuleEngine()
-
 
 def evaluate_compliance(request):
 
