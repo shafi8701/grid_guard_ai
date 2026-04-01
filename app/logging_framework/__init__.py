@@ -37,6 +37,9 @@ log_folder = Path(os.getenv("LOG_PATH", BASE_DIR / config["logging"]["folder"]))
 log_folder.mkdir(parents=True, exist_ok=True)
 log_file = log_folder / config["logging"]["file_name"]
 
+print(f"log_folder: {log_folder}")
+print(f"log_file: {log_file}")
+
 # -------------------------------
 # Formatter
 # -------------------------------

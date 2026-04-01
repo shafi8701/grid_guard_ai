@@ -9,11 +9,12 @@ from logging_framework.log_context import LogContext, set_context, add_to_contex
 import uuid
 #########
 
+
 rule_engine = RuleEngine()
 
 def evaluate_compliance(request):
 
-    # Create a context for this request
+      # Create a context for this request
     ctx = LogContext()
     ctx.set_request_id(str(uuid.uuid4()))
     set_context(ctx)
@@ -23,6 +24,8 @@ def evaluate_compliance(request):
 
     logger.info("Evaluating compliance processing")
 
+
+    print("Logger object created successfully.")
 
     # Step 1: Rule evaluation
     rule_result = rule_engine.evaluate(request)
