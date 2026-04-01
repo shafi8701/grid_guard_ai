@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from app.domain.models.rule_result import RuleResult
+from domain.models.rule_result import RuleResult
 
 
 class BaseRule(ABC):

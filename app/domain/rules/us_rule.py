@@ -1,5 +1,5 @@
-from app.domain.rules.base_rule import BaseRule
-from app.domain.models.rule_result import RuleResult
+from domain.rules.base_rule import BaseRule
+from domain.models.rule_result import RuleResult
 
 
 class USRule(BaseRule):

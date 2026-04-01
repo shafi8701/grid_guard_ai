@@ -1,1 +1,18 @@
 This is a grid guard ai. It tells you whether you can sell specific product in US or CA region. It has combination of both RAG and Fine tune LLMs implementations.
+
+docker rm -f $(docker ps -aq)
+docker rmi grid-guard-ai
+
+docker build -t grid-guard-ai .
+docker run -p 8000:8000 grid-guard-ai
+
+curl -X POST http://localhost:8000/v1/compliance/check \
+  -H "Content-Type: application/json" \
+  -d '{
+    "rule_id": "R-101",
+    "payload": {
+      "voltage": 230,
+      "current": 10
+    }
+  }'
+{"detail":[{"type":"missing","loc":["body","product"],"msg":"Field required","input":{"rule_id":"R-101","payload":{"voltage":230,"current":10}}},{"type":"missing","loc":["body","region"],"msg":"Field required","input":{"rule_id":"R-101","payload":{"voltage":230,"current":10}}},{"type":"missing","loc":["body","price"],"msg":"Field required","input":{"ru

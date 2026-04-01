@@ -1,4 +1,4 @@
-from app.schemas.response import ComplianceResponse
+from domain.models.response import ComplianceResponse
 
 
 def map_rule_to_response(rule_result, request):

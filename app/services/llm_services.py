@@ -1,4 +1,4 @@
-from app.models.request import ComplianceRequest
+from domain.models.request import ComplianceRequest
 
 
 def get_llm_response(request: ComplianceRequest):

@@ -1,7 +1,7 @@
-from app.domain.rules.canada_rule import CanadaRule
-from app.domain.rules.us_rule import USRule
-from app.domain.rules.pricing_rule import PricingRule
-from app.domain.models.rule_result import RuleResult
+from domain.rules.canada_rule import CanadaRule
+from domain.rules.us_rule import USRule
+from domain.rules.pricing_rule import PricingRule
+from domain.models.rule_result import RuleResult
 
 
 class RuleEngine:

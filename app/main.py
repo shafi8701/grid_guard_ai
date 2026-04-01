@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api.v1.compliance import router as compliance_router
+from api.v1.compliance import router as compliance_router
 
 app = FastAPI(title="Grid Guard AI")
 
