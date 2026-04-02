@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   grid_guard_ai:
     build: .
@@ -7,3 +5,10 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
+    depends_on:
+      - ollama
+
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "11434:11434"

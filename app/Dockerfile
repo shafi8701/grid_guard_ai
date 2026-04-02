@@ -5,7 +5,7 @@ WORKDIR /app
 COPY . .
 
 ENV PYTHONPATH=/app
-ENV LOG_PATH=app/logs
+ENV LOG_PATH=logs
 
 RUN pip install --no-cache-dir -r requirements.txt
 
